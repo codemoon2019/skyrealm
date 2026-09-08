@@ -108,10 +108,13 @@ export class AssetLoader {
       img.decoding = 'async';
       img.fetchPriority = 'low';
       img.onload = () => {
-        this.images.set(url, img);
         this.markLoaded();
-        if (needsChroma(url, img)) this.enqueueChroma(url, img, resolve);
-        else resolve();
+        if (needsChroma(url)) {
+          this.enqueueChroma(url, img, resolve);
+          return;
+        }
+        this.images.set(url, img);
+        resolve();
       };
       img.onerror = () => {
         this.failed.add(url);
@@ -135,9 +138,7 @@ export class AssetLoader {
     requestAnimationFrame(() => {
       const batch = this.chromaQ.splice(0, 4);
       for (const next of batch) {
-        if (this.images.get(next.url) === next.img) {
-          this.images.set(next.url, this.chroma(next.img));
-        }
+        this.images.set(next.url, this.chroma(next.img));
         next.done();
       }
       this.chromaBusy = false;
@@ -161,7 +162,7 @@ export class AssetLoader {
         const r = px[i]!;
         const g = px[i + 1]!;
         const b = px[i + 2]!;
-        if (g >= 180 && r <= 90 && b <= 90 && g - r >= 80 && g - b >= 80) {
+        if (g >= 150 && r <= 110 && b <= 110 && g - r >= 55 && g - b >= 55) {
           px[i + 3] = 0;
           keyed += 1;
         }
@@ -175,11 +176,8 @@ export class AssetLoader {
   }
 }
 
-function needsChroma(url: string, img: HTMLImageElement): boolean {
-  if (!url.includes('/sprites/')) return false;
-  const w = img.naturalWidth || img.width;
-  const h = img.naturalHeight || img.height;
-  return w * h > 0 && w * h <= 256 * 256;
+function needsChroma(url: string): boolean {
+  return !url.includes('/environments/') && !url.includes('/ui/logo') && !url.includes('/ui/style_bible');
 }
 
 export const assets = new AssetLoader();
