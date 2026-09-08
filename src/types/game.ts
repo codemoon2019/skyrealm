@@ -232,6 +232,8 @@ export interface GameSettings {
   particlesEnabled: boolean;
   quality: 'LOW' | 'HIGH';
   difficulty: Difficulty;
+  /** Which side the phone joystick sits on. Special sits on the other side. */
+  touchHand: 'LEFT' | 'RIGHT';
   highScore: number;
 }
 

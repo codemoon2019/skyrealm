@@ -34,7 +34,7 @@ const FEATURES = [
 const STEPS = [
   { n: '01', title: 'CHOOSE YOUR GUARDIAN', body: 'Begin with Aurelia of the dawn. Storms, shadows, and twilight wait for those who fly far.' },
   { n: '02', title: 'BOND YOUR AETHERLINGS', body: 'Two companions share your fire. Equip them. They shoot on their own.' },
-  { n: '03', title: 'FLY THE AETHER', body: 'Drag or WASD. Auto-fire. E spends special energy. P pauses the wind.' },
+  { n: '03', title: 'FLY THE AETHER', body: 'Joystick on a phone, or WASD. Auto-fire. E spends special energy. P pauses the wind.' },
   { n: '04', title: 'RETURN WITH SPOILS', body: 'Endless skies drop coins and eggs. Quests pay on time. Raids mint trophies.' },
 ] as const;
 
@@ -110,7 +110,7 @@ export function LandingPage({ save, onPlay }: Props) {
                 EXPLORE THE AETHER
               </a>
             </div>
-            <p className="lp-hero-hint">DRAG / WASD · AUTO-FIRE · E SPECIAL</p>
+            <p className="lp-hero-hint">JOYSTICK / WASD · AUTO-FIRE · E SPECIAL</p>
             <p className="lp-meta">
               <span>HIGH {save.settings.highScore.toLocaleString()}</span>
               <span>

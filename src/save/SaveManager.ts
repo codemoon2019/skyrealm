@@ -40,6 +40,7 @@ export function starterSave(): SaveGame {
       particlesEnabled: true,
       quality: 'HIGH',
       difficulty: Difficulty.NORMAL,
+      touchHand: 'LEFT',
       highScore: 0,
     },
     profile: {
@@ -117,6 +118,11 @@ export class SaveManager {
         MYTHIC: parsed.eggs?.MYTHIC ?? 0,
       };
       parsed.web3 = { lastAddress: parsed.web3?.lastAddress };
+      parsed.settings = {
+        ...starterSave().settings,
+        ...parsed.settings,
+        touchHand: parsed.settings?.touchHand === 'RIGHT' ? 'RIGHT' : 'LEFT',
+      };
       return parsed;
     } catch {
       return starterSave();

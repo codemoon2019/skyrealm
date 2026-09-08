@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, type PointerEvent } from 'react';
 import { AetherlingSpecies, GuardianId } from '../types/game.ts';
 import { drawAetherSprite, drawGuardianSprite } from '../assets/drawEntity.ts';
 
@@ -25,8 +25,8 @@ export function MenuPlayground({ onPop }: Props) {
   const uid = useId();
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const target = useRef({ x: 0.78, y: 0.62 });
-  const pos = useRef({ x: 0.78, y: 0.62 });
+  const target = useRef({ x: 0.5, y: 0.52 });
+  const pos = useRef({ x: 0.5, y: 0.52 });
   const sparkId = useRef(0);
   const burstId = useRef(0);
   const lastSpark = useRef(0);
@@ -120,10 +120,19 @@ export function MenuPlayground({ onPop }: Props) {
     onPop();
   };
 
+  const tapSky = (event: PointerEvent<HTMLDivElement>) => {
+    const el = event.target;
+    if (el !== event.currentTarget && el !== canvasRef.current) return;
+    point(event.clientX, event.clientY);
+    sparkle(event.clientX, event.clientY);
+    popAt(event.clientX, event.clientY);
+  };
+
   return (
     <div
       ref={wrapRef}
       className="menu-play"
+      onPointerDown={tapSky}
       onPointerMove={(event) => {
         point(event.clientX, event.clientY);
         if (event.pointerType !== 'touch') sparkle(event.clientX, event.clientY);

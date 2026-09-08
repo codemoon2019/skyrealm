@@ -14,7 +14,7 @@ export function HowToPlay({ onBack, onPop }: Props) {
         <div className="how-grid">
           <section>
             <h3>FLY</h3>
-            <p>Drag to move. Your Guardian auto-fires upward. WASD or arrows also work. E spends special energy. P pauses.</p>
+            <p>On a phone, use the joystick to move. Your Guardian auto-fires upward. WASD or arrows also work. E spends special energy. P pauses. Settings lets you put the pad on the left or right.</p>
           </section>
           <section>
             <h3>AETHERLINGS</h3>

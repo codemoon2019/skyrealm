@@ -165,7 +165,10 @@ export default function GameApp({ session }: Props) {
   const showTouch =
     mobile &&
     ui === UiScreen.GAME &&
-    (gameState === GameState.PLAYING || gameState === GameState.BOSS_FIGHT);
+    (gameState === GameState.PLAYING ||
+      gameState === GameState.BOSS_FIGHT ||
+      gameState === GameState.COUNTDOWN ||
+      gameState === GameState.BOSS_WARNING);
 
   if (!ready) {
     return (
@@ -178,7 +181,7 @@ export default function GameApp({ session }: Props) {
   return (
     <div className="app-shell">
       <Suspense fallback={null}>
-        <GameCanvas engine={engine} bridge={bridge} pointerControl={inGame} />
+        <GameCanvas engine={engine} bridge={bridge} pointerControl={inGame && !mobile} />
       </Suspense>
 
       {ui === UiScreen.MENU && !save.tutorialDone && (
@@ -397,6 +400,7 @@ export default function GameApp({ session }: Props) {
           engine={engine}
           specialReady={snap.specialReady}
           specialEnergy={snap.specialEnergy}
+          touchHand={save.settings.touchHand}
         />
       )}
     </div>

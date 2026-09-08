@@ -41,6 +41,19 @@ export function Settings({ settings, onChange, onBack, onReset, playful, onPop }
             </button>
           ))}
         </div>
+        <p className="hud-label">CONTROLS</p>
+        <div className="diff-row">
+          {(['LEFT', 'RIGHT'] as const).map((hand) => (
+            <button
+              key={hand}
+              type="button"
+              className={`ns-btn ${settings.touchHand === hand ? 'ns-btn-primary' : ''}`}
+              onClick={() => onChange({ touchHand: hand })}
+            >
+              {hand}
+            </button>
+          ))}
+        </div>
         <p className="hud-label">DIFFICULTY</p>
         <div className="diff-row">
           {([Difficulty.EASY, Difficulty.NORMAL, Difficulty.HARD] as const).map((level) => (

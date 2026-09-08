@@ -4,7 +4,7 @@ interface Props {
 }
 
 const BEATS = [
-  { title: 'MOVE', body: 'Drag on the sky, or use WASD / arrows. Your Guardian stays under your finger.' },
+  { title: 'MOVE', body: 'On a phone, steer with the joystick. WASD or arrows also work. Open Settings to put the pad on the left or right.' },
   { title: 'ATTACK', body: 'Auto-fire never stops. Clover pickups raise attack level. E spends special energy.' },
   { title: 'AETHERLINGS', body: 'Two companions follow and fight on their own. Hatch eggs in EGGS, then equip them in AETHERLINGS.' },
   { title: 'BOSS', body: 'A realm boss arrives with a shown weakness. Match elements, then bank the loot.' },
