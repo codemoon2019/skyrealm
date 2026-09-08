@@ -48,6 +48,11 @@ export const FORMATION = {
   wingFollow: 12,
 };
 
+/** Phone drag sits under the hero so the fingertip does not cover the sprite. */
+export const TOUCH = {
+  leadY: 156,
+};
+
 export const WEAPON_NAMES = [
   'BOLT I',
   'TWIN',

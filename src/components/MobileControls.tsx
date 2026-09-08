@@ -41,7 +41,7 @@ export function MobileControls({ engine, specialReady = false, specialEnergy = 0
         >
           {pauseSrc ? <img src={pauseSrc} alt="" /> : <span className="touch-pause-bars" aria-hidden="true" />}
         </button>
-        <p className="touch-hint">DRAG TO FLY</p>
+        <p className="touch-hint">DRAG BELOW TO FLY</p>
         <button
           type="button"
           className={`touch-btn special${specialReady ? ' is-ready' : ''}`}

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, type PointerEvent } from 'react';
 import type { GameEngine } from '../game/GameEngine.ts';
 import type { GameBridge } from '../game/phaser/GameBridge.ts';
 import { createPhaserGame, destroyPhaserGame } from '../game/phaser/PhaserGame.ts';
-import { LOGICAL_HEIGHT, LOGICAL_WIDTH } from '../game/constants.ts';
+import { LOGICAL_HEIGHT, LOGICAL_WIDTH, TOUCH } from '../game/constants.ts';
 import { useGameInput } from '../hooks/useGameInput.ts';
 
 interface Props {
@@ -29,10 +29,10 @@ export function GameCanvas({ engine, bridge, pointerControl }: Props) {
     if (!canvas) return { x: 0, y: 0 };
     const rect = canvas.getBoundingClientRect();
     if (rect.width <= 0 || rect.height <= 0) return { x: 0, y: 0 };
-    return {
-      x: ((event.clientX - rect.left) / rect.width) * LOGICAL_WIDTH,
-      y: ((event.clientY - rect.top) / rect.height) * LOGICAL_HEIGHT,
-    };
+    const x = ((event.clientX - rect.left) / rect.width) * LOGICAL_WIDTH;
+    let y = ((event.clientY - rect.top) / rect.height) * LOGICAL_HEIGHT;
+    if (event.pointerType === 'touch') y -= TOUCH.leadY;
+    return { x, y };
   }, []);
 
   const onDown = (event: PointerEvent<HTMLDivElement>) => {
