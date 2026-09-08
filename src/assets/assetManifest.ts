@@ -24,83 +24,84 @@ import type {
 export type Pose = 'idle' | 'attack' | 'hit' | 'ability' | 'death' | 'portrait' | 'icon';
 
 const ROOT = '/assets';
+const EXT = 'webp';
 
 export function guardianPath(id: GID, pose: Pose): string {
-  return `${ROOT}/guardians/${id.toLowerCase()}_${pose}.png`;
+  return `${ROOT}/guardians/${id.toLowerCase()}_${pose}.${EXT}`;
 }
 
 export function aetherPath(id: Sp, pose: Pose): string {
-  return `${ROOT}/aetherlings/${id.toLowerCase()}_${pose}.png`;
+  return `${ROOT}/aetherlings/${id.toLowerCase()}_${pose}.${EXT}`;
 }
 
 export function enemyPath(id: En, pose: Pose = 'idle'): string {
-  return `${ROOT}/enemies/${id.toLowerCase()}_${pose}.png`;
+  return `${ROOT}/enemies/${id.toLowerCase()}_${pose}.${EXT}`;
 }
 
 export function bossPath(id: BK, pose: Pose): string {
-  return `${ROOT}/bosses/${id.toLowerCase()}_${pose}.png`;
+  return `${ROOT}/bosses/${id.toLowerCase()}_${pose}.${EXT}`;
 }
 
 export function envPath(id: W, layer: 'bg' | 'mid' | 'fg'): string {
-  return `${ROOT}/environments/${id.toLowerCase()}_${layer}.png`;
+  return `${ROOT}/environments/${id.toLowerCase()}_${layer}.${EXT}`;
 }
 
 export const uiAssets = {
-  logo: `${ROOT}/ui/logo_skyrealm.png`,
-  styleBible: `${ROOT}/ui/style_bible.png`,
-  panel: `${ROOT}/ui/panel.png`,
-  btn: `${ROOT}/ui/btn.png`,
-  lock: `${ROOT}/icons/lock.png`,
-  close: `${ROOT}/icons/close.png`,
-  settings: `${ROOT}/icons/settings.png`,
-  coin: `${ROOT}/icons/coin.png`,
-  crystal: `${ROOT}/icons/crystal.png`,
-  trophy: `${ROOT}/icons/trophy.png`,
-  energy: `${ROOT}/icons/energy.png`,
-  hudHp: `${ROOT}/icons/hud_hp.png`,
-  hudShield: `${ROOT}/icons/hud_shield.png`,
-  hudSpecial: `${ROOT}/icons/hud_special.png`,
-  hudPause: `${ROOT}/icons/hud_pause.png`,
+  logo: `${ROOT}/ui/logo_skyrealm.${EXT}`,
+  styleBible: `${ROOT}/ui/style_bible.${EXT}`,
+  panel: `${ROOT}/ui/panel.${EXT}`,
+  btn: `${ROOT}/ui/btn.${EXT}`,
+  lock: `${ROOT}/icons/lock.${EXT}`,
+  close: `${ROOT}/icons/close.${EXT}`,
+  settings: `${ROOT}/icons/settings.${EXT}`,
+  coin: `${ROOT}/icons/coin.${EXT}`,
+  crystal: `${ROOT}/icons/crystal.${EXT}`,
+  trophy: `${ROOT}/icons/trophy.${EXT}`,
+  energy: `${ROOT}/icons/energy.${EXT}`,
+  hudHp: `${ROOT}/icons/hud_hp.${EXT}`,
+  hudShield: `${ROOT}/icons/hud_shield.${EXT}`,
+  hudSpecial: `${ROOT}/icons/hud_special.${EXT}`,
+  hudPause: `${ROOT}/icons/hud_pause.${EXT}`,
 } as const;
 
 export const elementAssets: Record<El, string> = {
-  [ElementId.FIRE]: `${ROOT}/icons/el_fire.png`,
-  [ElementId.WATER]: `${ROOT}/icons/el_water.png`,
-  [ElementId.NATURE]: `${ROOT}/icons/el_nature.png`,
-  [ElementId.SHADOW]: `${ROOT}/icons/el_shadow.png`,
-  [ElementId.LIGHT]: `${ROOT}/icons/el_light.png`,
-  [ElementId.ARCANE]: `${ROOT}/icons/el_arcane.png`,
+  [ElementId.FIRE]: `${ROOT}/icons/el_fire.${EXT}`,
+  [ElementId.WATER]: `${ROOT}/icons/el_water.${EXT}`,
+  [ElementId.NATURE]: `${ROOT}/icons/el_nature.${EXT}`,
+  [ElementId.SHADOW]: `${ROOT}/icons/el_shadow.${EXT}`,
+  [ElementId.LIGHT]: `${ROOT}/icons/el_light.${EXT}`,
+  [ElementId.ARCANE]: `${ROOT}/icons/el_arcane.${EXT}`,
 };
 
 export const rarityAssets: Record<Rar, string> = {
-  [Rarity.COMMON]: `${ROOT}/ui/frame_common.png`,
-  [Rarity.RARE]: `${ROOT}/ui/frame_rare.png`,
-  [Rarity.EPIC]: `${ROOT}/ui/frame_epic.png`,
-  [Rarity.LEGENDARY]: `${ROOT}/ui/frame_legendary.png`,
-  [Rarity.MYTHIC]: `${ROOT}/ui/frame_mythic.png`,
+  [Rarity.COMMON]: `${ROOT}/ui/frame_common.${EXT}`,
+  [Rarity.RARE]: `${ROOT}/ui/frame_rare.${EXT}`,
+  [Rarity.EPIC]: `${ROOT}/ui/frame_epic.${EXT}`,
+  [Rarity.LEGENDARY]: `${ROOT}/ui/frame_legendary.${EXT}`,
+  [Rarity.MYTHIC]: `${ROOT}/ui/frame_mythic.${EXT}`,
 };
 
 export const eggAssets: Record<Egg, string> = {
-  [EggTier.BASIC]: `${ROOT}/eggs/basic.png`,
-  [EggTier.RARE]: `${ROOT}/eggs/rare.png`,
-  [EggTier.EPIC]: `${ROOT}/eggs/epic.png`,
-  [EggTier.LEGENDARY]: `${ROOT}/eggs/legendary.png`,
-  [EggTier.MYTHIC]: `${ROOT}/eggs/mythic.png`,
+  [EggTier.BASIC]: `${ROOT}/eggs/basic.${EXT}`,
+  [EggTier.RARE]: `${ROOT}/eggs/rare.${EXT}`,
+  [EggTier.EPIC]: `${ROOT}/eggs/epic.${EXT}`,
+  [EggTier.LEGENDARY]: `${ROOT}/eggs/legendary.${EXT}`,
+  [EggTier.MYTHIC]: `${ROOT}/eggs/mythic.${EXT}`,
 };
 
 export const powerUpAssets: Record<PU, string> = {
-  [PowerUpType.CLOVER]: `${ROOT}/powerups/clover.png`,
-  [PowerUpType.MAGNET]: `${ROOT}/powerups/magnet.png`,
-  [PowerUpType.DOUBLE]: `${ROOT}/powerups/double.png`,
-  [PowerUpType.RUSH]: `${ROOT}/powerups/rush.png`,
-  [PowerUpType.HEART]: `${ROOT}/powerups/heart.png`,
-  [PowerUpType.FREEZE]: `${ROOT}/powerups/freeze.png`,
-  [PowerUpType.BLAST]: `${ROOT}/powerups/blast.png`,
+  [PowerUpType.CLOVER]: `${ROOT}/powerups/clover.${EXT}`,
+  [PowerUpType.MAGNET]: `${ROOT}/powerups/magnet.${EXT}`,
+  [PowerUpType.DOUBLE]: `${ROOT}/powerups/double.${EXT}`,
+  [PowerUpType.RUSH]: `${ROOT}/powerups/rush.${EXT}`,
+  [PowerUpType.HEART]: `${ROOT}/powerups/heart.${EXT}`,
+  [PowerUpType.FREEZE]: `${ROOT}/powerups/freeze.${EXT}`,
+  [PowerUpType.BLAST]: `${ROOT}/powerups/blast.${EXT}`,
 };
 
 export const particleAssets = {
-  spark: `${ROOT}/particles/spark.png`,
-  puff: `${ROOT}/particles/puff.png`,
+  spark: `${ROOT}/particles/spark.${EXT}`,
+  puff: `${ROOT}/particles/puff.${EXT}`,
 } as const;
 
 export const SKIP_SHEET_URLS = new Set<string>([
@@ -123,23 +124,23 @@ export function hangarChipUrls(): string[] {
   ];
 }
 
-export function criticalAssetUrls(): string[] {
-  const urls = [
-    uiAssets.logo,
-    guardianPath(GuardianId.AURELIA, 'idle'),
-    guardianPath(GuardianId.AURELIA, 'portrait'),
-    aetherPath(AetherlingSpecies.FLICKER, 'idle'),
-    aetherPath(AetherlingSpecies.FLICKER, 'portrait'),
-    aetherPath(AetherlingSpecies.LUMEN, 'portrait'),
-    envPath(WorldId.MEADOWS, 'bg'),
-    envPath(WorldId.MEADOWS, 'mid'),
-    envPath(WorldId.MEADOWS, 'fg'),
-    ...hangarChipUrls(),
-  ];
+/** Art needed to open the hangar. Combat skies and the rest of the dex load later. */
+export function hangarBootUrls(): string[] {
+  const urls = [...hangarChipUrls()];
   for (const id of Object.values(GuardianId)) {
     urls.push(guardianPath(id, 'idle'), guardianPath(id, 'portrait'), guardianPath(id, 'icon'));
   }
+  urls.push(
+    aetherPath(AetherlingSpecies.FLICKER, 'idle'),
+    aetherPath(AetherlingSpecies.FLICKER, 'portrait'),
+    aetherPath(AetherlingSpecies.LUMEN, 'portrait'),
+    aetherPath(AetherlingSpecies.TIDECURL, 'idle'),
+  );
   return [...new Set(urls)];
+}
+
+export function criticalAssetUrls(): string[] {
+  return hangarBootUrls();
 }
 
 export function worldAssetUrls(id: W): string[] {

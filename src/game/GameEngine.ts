@@ -137,7 +137,6 @@ export class GameEngine {
     this.session = session ?? new GameSession();
     this.syncSettings();
     this.starfield.setWorld(WorldId.MEADOWS);
-    void assets.load(worldAssetUrls(WorldId.MEADOWS));
   }
 
   get settings(): GameSettings {
@@ -178,7 +177,6 @@ export class GameEngine {
     this.audio.setBed('hangar');
     this.player.reset();
     this.starfield.setWorld(WorldId.MEADOWS);
-    void assets.load(worldAssetUrls(WorldId.MEADOWS));
   }
 
   pause(): void {

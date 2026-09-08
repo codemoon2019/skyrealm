@@ -1,4 +1,4 @@
-import { criticalAssetUrls, SKIP_SHEET_URLS } from './assetManifest.ts';
+import { hangarBootUrls, SKIP_SHEET_URLS } from './assetManifest.ts';
 
 const DEV = import.meta.env.DEV;
 
@@ -26,7 +26,7 @@ export class AssetLoader {
   }
 
   async loadCritical(): Promise<void> {
-    await this.load(criticalAssetUrls());
+    await this.load(hangarBootUrls());
   }
 
   async load(urls: readonly string[]): Promise<void> {
@@ -106,10 +106,12 @@ export class AssetLoader {
       }
       const img = new Image();
       img.decoding = 'async';
+      img.fetchPriority = 'low';
       img.onload = () => {
         this.images.set(url, img);
         this.markLoaded();
-        this.enqueueChroma(url, img, resolve);
+        if (needsChroma(url, img)) this.enqueueChroma(url, img, resolve);
+        else resolve();
       };
       img.onerror = () => {
         this.failed.add(url);
@@ -171,6 +173,13 @@ export class AssetLoader {
       return img;
     }
   }
+}
+
+function needsChroma(url: string, img: HTMLImageElement): boolean {
+  if (!url.includes('/sprites/')) return false;
+  const w = img.naturalWidth || img.width;
+  const h = img.naturalHeight || img.height;
+  return w * h > 0 && w * h <= 256 * 256;
 }
 
 export const assets = new AssetLoader();
