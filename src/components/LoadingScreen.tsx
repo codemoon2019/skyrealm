@@ -14,7 +14,7 @@ const LORE = [
 ] as const;
 
 function loreFor(progress: number): string {
-  let line = LORE[0].line;
+  let line: string = LORE[0].line;
   for (const step of LORE) {
     if (progress >= step.at) line = step.line;
   }
